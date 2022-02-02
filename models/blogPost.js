@@ -3,12 +3,14 @@ import mongoose from "mongoose";
 const {Schema, model} = mongoose;
 
 const blogPostSchema = new Schema({
-    name: String,
+    title: String,
     content: String,
-    date: { type: Date, default: Date.now },
-    image:{
-        data: Buffer,
-        contentType: String
+    category: String,
+    date: { type: Date, default: Date.now() },
+    image:
+    {
+        data :  {type:Buffer },
+        contentType: { type:String,default: 'image/png'}
     }
     
     

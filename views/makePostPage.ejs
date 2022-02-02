@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+		"width=device-width,
+		initial-scale=1.0">
+    <title>Main feed</title>
+</head>
+
+<body>
+	<h1 id="greetings_id">Make a new post?</h1>
+    <div id='postForm_id'>
+        <form action='/blogPostsRouter/' method='POST' enctype="multipart/form-data">
+            <input type="text" id="titlepost_id" name='title' placeholder = 'Title'><br><br>
+            <label for="image_url_id" >Insert a file(optional) : </label><br><br>
+            <input type="file" id="imageUrl_id" name="image"><br><br>
+            <textarea id="content_id" value="text" name='content'
+                          placeholder="Text(optional)"></textarea><br><br>
+            <select id="category_id" name='category'>
+                <option disabled selected value>Choose category?</option>
+                <option value="goofy">Goofy</option>
+                <option value="nsfw">NSFW</option>
+                <option value="advice">Advice</option>
+            </select><br><br>
+            <button type="submit">Create new post</button>
+        </form>
+    </div>
+    
+	<script>
+
+	</script>
+</body>
+
+</html>
