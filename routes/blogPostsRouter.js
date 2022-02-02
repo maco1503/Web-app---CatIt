@@ -22,6 +22,8 @@ router.get('/createPage' , async(req,res)=>{
 //read
 router.get('/:id', async (req,res) =>{
     const post = await Post.find({_id: req.params.id});
+    console.log(post);
+        //console.log(post[0].image.data.toString("base64"));
     if(post){
         res.send(post);
     }
@@ -31,20 +33,19 @@ router.get('/:id', async (req,res) =>{
 });
 
 //create
-router.post('/', /*upload.single('image'),*/ async (req, res) => {
-    try
-    {   
-        //const imgData = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
-        const obj ={
-            title: req.body.title,
-            content: req.body.content,
-            category: req.body.category,
-            /*date: { type: Date, default: Date.now() }*/
-            /*image:{
-            data: Buffer,
-            contentType: String
-            }  */ 
-        }
+router.post('/', upload.single('image'), async (req, res) => {
+    try{
+    
+    const obj ={
+        title: req.body.title,
+        content: req.body.content,
+        category: req.body.category,
+        image:{
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        } 
+    }
+       console.log();
         const post = new Post(obj);
         await post.save();
         //await fs.unlinkSync( path.join(__dirname + '/uploads/' + req.file.filename));

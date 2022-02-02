@@ -8,17 +8,13 @@ import postRouter from './routes/blogPostsRouter.js';
 const app = express();
 const port = 8080;
 
+
+
 app.set('view engine', 'ejs');
-
-app.use(express.json());
-
-
-
-app.use('/blogPostsRouter', postRouter);
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
+app.use('/blogPostsRouter', postRouter);
 app.use('/', function(req, res){
     res.render('makePostPage');
 });
