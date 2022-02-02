@@ -1,7 +1,8 @@
 import express  from "express";
 import mongoose from "mongoose";
-import 'dotenv/config'
-import postRouter from './routes/blogPosts.js'
+import bodyParser from "body-parser"
+import 'dotenv/config';
+import postRouter from './routes/blogPosts.js';
 const app = express();
 const port = 8080;
 
@@ -12,6 +13,10 @@ app.get('/', (req,res)=>{
 })
 
 app.use('/blogPosts', postRouter);
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.set("view engine", "ejs");
 
 app.listen(port, () =>{
     console.log("merge");

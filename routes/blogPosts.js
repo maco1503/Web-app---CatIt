@@ -25,6 +25,7 @@ router.get('/:id', async (req,res) =>{
 router.post('/', async (req,res) =>{
     const post = new Post(req.body);
     await post.save();
+    console.log(post.createdAt);
     res.send(post);
 });
 
