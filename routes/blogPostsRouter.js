@@ -31,23 +31,23 @@ router.get('/:id', async (req,res) =>{
 });
 
 //create
-router.post('/', upload.single('image') , async (req, res) => {
+router.post('/', /*upload.single('image'),*/ async (req, res) => {
     try
     {   
         //const imgData = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
         const obj ={
-            title: String,
-            content: String,
-            category: String,
-            date: { type: Date, default: Date.now() },
-            image:{
+            title: req.body.title,
+            content: req.body.content,
+            category: req.body.category,
+            /*date: { type: Date, default: Date.now() }*/
+            /*image:{
             data: Buffer,
             contentType: String
-            }   
+            }  */ 
         }
         const post = new Post(obj);
         await post.save();
-        await fs.unlinkSync( path.join(__dirname + '/uploads/' + req.file.filename));
+        //await fs.unlinkSync( path.join(__dirname + '/uploads/' + req.file.filename));
         res.send(post);
     }
     catch(err)

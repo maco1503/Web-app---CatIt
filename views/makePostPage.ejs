@@ -12,13 +12,13 @@
 <body>
 	<h1 id="greetings_id">Make a new post?</h1>
     <div id='postForm_id'>
-        <form action='/blogPostsRouter/' method='POST' enctype="multipart/form-data">
-            <input type="text" id="titlepost_id" name='title' placeholder = 'Title'><br><br>
+        <form action='/blogPostsRouter/' method="POST" enctype="multipart/form-data">
+            <input type="text" id="titlepost_id" name="title" placeholder = 'Title'><br><br>
             <label for="image_url_id" >Insert a file(optional) : </label><br><br>
             <input type="file" id="imageUrl_id" name="image"><br><br>
-            <textarea id="content_id" value="text" name='content'
+            <textarea id="content_id" value="text" name="content"
                           placeholder="Text(optional)"></textarea><br><br>
-            <select id="category_id" name='category'>
+            <select id="category_id" name="category">
                 <option disabled selected value>Choose category?</option>
                 <option value="goofy">Goofy</option>
                 <option value="nsfw">NSFW</option>
