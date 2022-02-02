@@ -1,5 +1,5 @@
 import express from "express";
-import Post from '../models/blogPost';
+import Post from '../models/blogPost.js';
 
 const router = express.Router();
 
@@ -39,6 +39,7 @@ router.patch('/:id', async (req,res) =>{
     }
 });
 
+
 //delete
 router.get('/:id', async (req,res) =>{
     const post = await Post.findOneAndDelete({_id: req.params.id});
@@ -49,3 +50,5 @@ router.get('/:id', async (req,res) =>{
         res.status(404).send();
     }
 });
+
+export default router;
