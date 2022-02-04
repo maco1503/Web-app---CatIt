@@ -7,11 +7,7 @@ const blogPostSchema = new Schema({
     content: {type:String},
     category: {type:String},
     date: { type: Date, default: Date.now() },
-    image:
-    {
-        data :  {type:Buffer },
-        contentType: { type:String,default: 'image/png'}
-    }
+    updated : {type:Boolean}
     
     
 });

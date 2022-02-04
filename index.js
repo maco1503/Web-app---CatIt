@@ -1,7 +1,6 @@
 import express  from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import multer from 'multer';
 import 'dotenv/config';
 import postRouter from './routes/blogPostsRouter.js';
 
@@ -11,18 +10,18 @@ const port = 8080;
 
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.use('/blogPostsRouter', postRouter);
+app.use('/post', postRouter);
+
+app.use(express.static("views"));
+
+
 app.use('/', function(req, res){
-    res.render('makePostPage');
-});
- 
+    res.render('pages/homePage');
+});    
 
-app.get(('/'),(req,res)=>{
-    res.send();
-});
 
 
 app.listen(port, () =>{
