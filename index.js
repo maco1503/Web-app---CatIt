@@ -26,5 +26,8 @@ app.use('/', function(req, res){
 
 app.listen(port, () =>{
     console.log("merge");
-    mongoose.connect(process.env.MONGODB_URL);
+    mongoose.connect(process.env.MONGODB_URL,
+    { useNewUrlParser: true, useUnifiedTopology: true }, err => {
+        console.log('connected')
+    });
 });
