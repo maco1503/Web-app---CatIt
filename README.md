@@ -2,5 +2,6 @@
 Probably a cheap copy of reddit but with lots and lots of cats
 
 TODO : 
-    -add style
-    -add photo upload option
+- make CRUD & CUD(dynamic) for categories
+- add style
+- implement photo upload 
