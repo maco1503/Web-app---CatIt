@@ -1,4 +1,7 @@
 # Web-app---CatIt
-Probably a cheap copy of reddit but with lots and lots of cats
+Probably a cheap copy of reddit but with lots and lots of cats (80% ish complete)
 
-Spoiler : this project isn't complete yet(i need to add CRUD & dynamic CUD for categories and add a style)
+TODO : 
+- add style
+- implement photo upload 
+
