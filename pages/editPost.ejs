@@ -15,11 +15,11 @@
  <input id="content" type="text" placeholder="content" name="content" required value="<%= post.content %>">
  <label for="content" >content</label><br><br>
  <select id="category_id" name="category">
-    <option disabled selected value><%= post.category %></option>
-    <option value="goofy">Goofy</option>
-    <option value="nsfw">NSFW</option>
-    <option value="advice">Advice</option>
-</select>
+    <option disabled selected value>Choose category</option>
+    <%categories.forEach(category=>{%>
+         <option value="<%=category.name%>"><%=category.name%></option>
+    <%})%>
+</select><br><br>
 <label for="category_id">Category</label>
 <br><br>
 
