@@ -1,14 +1,22 @@
 import express from "express";
 import Post from '../models/blogPost.js';
-
-
+import Category from '../models/blogCategory.js';
+//find out why update &del doen't work for categories
 const router = express.Router();
+
+router.get('/cat/:id',async (req,res)=>{
+    const categories= await Category.find();
+        const posts= await Post.find({category:req.params.name});
+        res.render('../pages/Categories',{posts:posts,categories:categories[0]});
+    
+})
 
 router.get('/' , async (req , res)=>{
     try
     {
         const posts = await Post.find({});
-        res.render('pages/allPostPage' , { posts:posts })
+        const categories= await Category.find({});
+        res.render('../pages/allPostPage' , { posts:posts, categories:categories });
     }
     catch(err)
     {
@@ -16,27 +24,57 @@ router.get('/' , async (req , res)=>{
     }
 });
 
+/*
+//render new cat page
+router.get('/newcat',async(req,res)=>{
+    const categories= await Category.find();
+    res.render('../pages/allCategories' , { categories:categories });
+    
+})*/
+
+//create new cat
+router.post('/ncat',async(req,res)=>{
+    //console.log(7);
+    let category=new Category({
+        name:req.body.name
+    })
+    category=await category.save();
+    res.redirect('../post');
+    
+})
+//edit&del cat
+router.post('/cat/', async (req,res) =>{
+    //const metoda = req.body.metoda;
+    console.log(req.body.metoda);
+    if(req.body.metoda == "update"){
+        console.log(7);
+        const obj ={
+            name:req.body.name
+        }
+    const categories=await Category.findOneAndUpdate({_id: req.body.id},obj);
+    res.redirect('../');
+    }
+    if(req.body.metoda =="delete"){
+        console.log("nema");
+        const categories =await Category.findByIdAndDelete({_id: req.body.id});
+    res.redirect('../');
+
+    }
+});
 
 router.get('/create', async (req,res) =>{
-    res.render('pages/makePostPage');
+
+        const posts = await Post.find({});
+        const categories= await Category.find();
+        res.render('../pages/makePostPage' , { posts:posts, categories:categories });
 });
 
-/*
-//read
-router.get('/:id', async (req,res) =>{
-    const post = await Post.find({_id: req.params.id});
-    if(post){
-        res.send(post);
-    }
-    else{
-        res.status(404).send();
-    }
-});
-*/
-//create
+
+
+//create post
 router.post('/', async (req, res) => {
-    console.log(req.file);
-    console.log(7);
+    //console.log(7);
+    //console.log(req.file);
     try{
         
         const obj ={
@@ -58,7 +96,7 @@ router.get('/single/:id' , async (req,res) => {
     try
     {   
         const post = await Post.find({_id: req.params.id });
-        res.render('pages/postPage' ,{ post:post[0]} );
+        res.render('../pages/postPage' ,{ post:post[0]} );
     }
     catch(err)
     {
@@ -67,30 +105,31 @@ router.get('/single/:id' , async (req,res) => {
 } );
 
 
-//update
+//update&del page render
 router.get('/single/edit/:id', async (req,res) =>{
     const post = await Post.find({_id:req.params.id});
-
-    const obj = 
-    {   _id:post[0]._id,
-        title:post[0].title,
-        content:post[0].content,
-        category:post[0].category
-    }
-
-    res.render('pages/editPost' , {post:obj});
+    //console.log(post[0]);
+    res.render('../pages/editPost' , {post:post[0]});
 
 });
-
-
-//delete
-router.delete('/:id', async (req,res) =>{
-    const post = await Post.findOneAndDelete({_id: req.params.id});
-    if(post){
-        res.send(post);
+//update & delete
+router.post('/single/', async (req,res) =>{
+    const metoda = req.body.metoda;
+    //console.log(req.body.id);
+    if(metoda == "patch"){
+        console.log(7);
+        const obj ={
+            title: req.body.title,
+            content: req.body.content,
+            category: req.body.category,
+            updated : true
+        }
+    const post = await Post.findOneAndUpdate({_id: req.body.id},obj);
+    res.redirect('/post');
     }
-    else{
-        res.status(404).send();
+    if(metoda =="delete"){
+        const post = await Post.findByIdAndDelete({_id: req.body.id});
+    res.redirect('/post');
     }
 });
 

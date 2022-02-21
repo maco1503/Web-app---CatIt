@@ -1,6 +1,4 @@
 # Web-app---CatIt
 Probably a cheap copy of reddit but with lots and lots of cats
 
-TODO : 
-    -add style
-    -make CUD for categories
+Spoiler : this project isn't complete yet(i need to add CRUD & dynamic CUD for categories and add a style)

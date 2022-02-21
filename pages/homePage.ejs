@@ -11,10 +11,10 @@
 
 <body>
 	<h1>Main feed</h1>
-    
-	<script>
-
-	</script>
+	<%categories.forEach(category=>{%>
+		<a href='/<%=category.name%>'><%=category.name%></a>
+	<%})%>
+	
 </body>
 
 </html>

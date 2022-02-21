@@ -1,9 +1,6 @@
 
         <% posts.forEach( (post) => { %>
-            
-                <div id="card-body">
                     <h5 > Title : <%= post.title %> </h5>
-                    <p > Content : <%= post.content  %> + "..."  </p>
+                    <p > Content : <%= post.content  %> </p>
                     <a href="/post/single/<%= post._id %>">See Post</a>
-                </div>
         <%})%>

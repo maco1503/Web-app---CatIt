@@ -15,19 +15,12 @@ app.use(express.json());
 
 app.use('/post', postRouter);
 
-app.use(express.static("views"));
+app.use(express.static("pages"));
 
-
-app.use('/', function(req, res){
-    res.render('pages/homePage');
-});    
 
 
 
 app.listen(port, () =>{
     console.log("merge");
-    mongoose.connect(process.env.MONGODB_URL,
-    { useNewUrlParser: true, useUnifiedTopology: true }, err => {
-        console.log('connected')
-    });
+    mongoose.connect(process.env.MONGODB_URL);
 });
