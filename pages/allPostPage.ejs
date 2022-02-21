@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Actual Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <%categories.forEach(category=>{%>
+        <a href='/post/cat/<%=category._id%>'><%=category.name%></a>
+    <%})%>
+    <br><br>
+    <form id="newCat" action="/post/ncat" method="post" >
+        <button id="showInput" type="button">New Category</button>
+        <div id="categoryInput" style="display: none;">
+            <input id = "text" class="calsa" type="text" name="name">
+            <button type="submit" id="save"><strong>Save</strong></button>
+            <button type="button" id="cancel"><strong>Cancel</strong></button>
+        </div>
+    </form><!--Delete id and class la input text-->
+    
+    <br><br>
+        <% posts.forEach( (post) => { %>
+                    <h5 > Title : <%= post.title %> </h5>
+                    <p > Content : <%= post.content  %> </p>
+                    <a href="/post/single/<%= post._id %>">See Post</a>
+        <%})%>
+        
+<script>
+
+    function show(){
+        document.getElementById("categoryInput").style.display="";
+    }
+    function hide(){
+        document.getElementById("categoryInput").style.display="none";
+    }
+    document.getElementById("showInput").addEventListener("click", show);
+    document.getElementById("save").addEventListener("click", hide);
+    document.getElementById("cancel").addEventListener("click", hide);
+
+
+    
+
+</script>
+</body>
+</html>

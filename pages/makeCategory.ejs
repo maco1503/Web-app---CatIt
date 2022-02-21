@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Actual Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+     
+    <div class="content">
+        <h1>CatIt</h1>
+        <div class="blog">
+            <form action="/newcat" method="post">
+                <button id="showInput" type="button" onclick="show()"><strong>New Category</strong></button>
+                <div id="category-input" style="display: none;" hidden>
+                    <input type="text" name="name" >
+                    <button type="submit" id="save"><strong>Save</strong></button>
+                </div>
+            </form>
+             
+        </div>
+    </div>
+    <script>
+        function show(){
+            document.querySelector('#category-input').style.display="show";
+
+        }
+
+        function hide(){
+            const cat=document.querySelector('#category-input')
+            if(document.querySelector('#ncategory').value!=="")
+                cat.style.display='none'
+        }
+        function hide2(){
+            const cat=document.querySelector('#category-input')
+            cat.style.display='none'
+        }
+    </script>
+</body>
+</html>

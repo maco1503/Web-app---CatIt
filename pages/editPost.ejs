@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>
+        Update page
+    </title>
+        
+</head>
+  <body>
+      <form action="/post/single/" method="post">
+    <input id="title" type="text" " placeholder="title" name="title" required value="<%= post.title %>">
+ <label for="title" >Title</label><br><br>
+
+ <input id="content" type="text" placeholder="content" name="content" required value="<%= post.content %>">
+ <label for="content" >content</label><br><br>
+ <select id="category_id" name="category">
+    <option disabled selected value><%= post.category %></option>
+    <option value="goofy">Goofy</option>
+    <option value="nsfw">NSFW</option>
+    <option value="advice">Advice</option>
+</select>
+<label for="category_id">Category</label>
+<br><br>
+
+<input style="display:none" value="<%= post._id %>" name="id">
+<button id='patch'type="submit"  name="metoda" value="patch">Update your post</button>
+<button id='delete'type="submit" name="metoda" value="delete">Delete your post</button>
+
+
+<br><br>
+
+</form>
+
+
+</body>
