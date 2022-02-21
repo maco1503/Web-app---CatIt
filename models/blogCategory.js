@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const {model, Schema} = mongoose;
 
 const blogCategorySchema = new Schema({
-    name: {type:String}
+    name: {type:String},
+    date: { type: Date, default: Date.now() }
     
     
 });

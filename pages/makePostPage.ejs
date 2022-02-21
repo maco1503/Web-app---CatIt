@@ -11,18 +11,24 @@
 
 <body>
 	<h1 id="greetings_id">Make a new post?</h1>
-        <form id='newPost'action='/post/' method="POST" >
+        <form id='newPost'action='/post/' method="post" >
             <input type="text" id="title" name="title" placeholder = 'Title'><br><br>
             <textarea id="content_id" value="text" name="content"
                           placeholder="Text(optional)"></textarea><br><br>
             <select id="category_id" name="category">
                 <option disabled selected value>Choose category</option>
                 <%categories.forEach(category=>{%>
-                    
-                        <option value="<%=category.name%>"><%=category.name%></option>
-                    
+                     <option value="<%=category.name%>"><%=category.name%></option>
                 <%})%>
             </select><br><br>
+            <button type="submit">Create new post</button>
+        </form>
+<br><br><br>
+        <form action='/post/' method="post" >
+            <input type="text" id="title" name="title" placeholder = 'Title'><br><br>
+            <textarea id="content_id" value="text" name="content"
+                          placeholder="Text(optional)"></textarea><br><br>
+            
             <button type="submit">Create new post</button>
         </form>
 
