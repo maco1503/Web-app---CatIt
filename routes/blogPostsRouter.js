@@ -5,8 +5,10 @@ import Category from '../models/blogCategory.js';
 const router = express.Router();
 
 router.get('/cat/:id',async (req,res)=>{
-    const categories= await Category.find();
+    const categories= await Category.find({_id:req.params.id});
+    //console.log(categories);
         const posts= await Post.find({category:req.params.name});
+    //console.log(categories[0]);
         res.render('../pages/Categories',{posts:posts,categories:categories[0]});
     
 })
@@ -45,7 +47,7 @@ router.post('/ncat',async(req,res)=>{
 //edit&del cat
 router.post('/cat/', async (req,res) =>{
     //const metoda = req.body.metoda;
-    console.log(req.body.metoda);
+    console.log(req.body.id);
     if(req.body.metoda == "update"){
         console.log(7);
         const obj ={
@@ -115,7 +117,7 @@ router.get('/single/edit/:id', async (req,res) =>{
 //update & delete
 router.post('/single/', async (req,res) =>{
     const metoda = req.body.metoda;
-    //console.log(req.body.id);
+    console.log(req.body.id);
     if(metoda == "patch"){
         console.log(7);
         const obj ={
