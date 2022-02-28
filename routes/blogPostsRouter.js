@@ -1,7 +1,7 @@
 import express from "express";
 import Post from '../models/blogPost.js';
 import Category from '../models/blogCategory.js';
-//find out why update &del doen't work for categories
+
 const router = express.Router();
 
 router.get('/cat/:id',async (req,res)=>{
@@ -24,17 +24,8 @@ router.get('/' , async (req , res)=>{
     }
 });
 
-/*
-//render new cat page
-router.get('/newcat',async(req,res)=>{
-    const categories= await Category.find();
-    res.render('../pages/allCategories' , { categories:categories });
-    
-})*/
-
 //create new cat
 router.post('/ncat',async(req,res)=>{
-    //console.log(7);
     let category=new Category({
         name:req.body.name
     })
