@@ -5,9 +5,9 @@ import Category from '../models/blogCategory.js';
 const router = express.Router();
 
 router.get('/cat/:id',async (req,res)=>{
-    const categories= await Category.find();
-        const posts= await Post.find({category:req.params.name});
-        res.render('../pages/Categories',{posts:posts,categories:categories[0]});
+    const categories= await Category.find({_id:req.params.id});
+    const posts= await Post.find({category:categories[0].name});
+    res.render('../pages/Categories',{posts:posts,categories:categories[0]});
     
 })
 
@@ -24,8 +24,10 @@ router.get('/' , async (req , res)=>{
     }
 });
 
+
 //create new cat
 router.post('/ncat',async(req,res)=>{
+
     let category=new Category({
         name:req.body.name
     })
@@ -35,18 +37,26 @@ router.post('/ncat',async(req,res)=>{
 })
 //edit&del cat
 router.post('/cat/', async (req,res) =>{
-    //const metoda = req.body.metoda;
+
     console.log(req.body.metoda);
     if(req.body.metoda == "update"){
-        console.log(7);
+        const oldName = await Category.find({_id:req.body.id})
+        const posts = await Post.find({category:oldName[0].name});
+
         const obj ={
             name:req.body.name
         }
+
     const categories=await Category.findOneAndUpdate({_id: req.body.id},obj);
+    for(let i=0;i<posts.length;i++)
+    {
+        posts[i].category = req.body.name;
+        posts[i]= await posts[i].save();
+    }
     res.redirect('../');
     }
     if(req.body.metoda =="delete"){
-        console.log("nema");
+
         const categories =await Category.findByIdAndDelete({_id: req.body.id});
     res.redirect('../');
 
@@ -64,8 +74,7 @@ router.get('/create', async (req,res) =>{
 
 //create post
 router.post('/', async (req, res) => {
-    //console.log(7);
-    //console.log(req.file);
+
     try{
         
         const obj ={
@@ -99,14 +108,15 @@ router.get('/single/:id' , async (req,res) => {
 //update&del page render
 router.get('/single/edit/:id', async (req,res) =>{
     const post = await Post.find({_id:req.params.id});
-    //console.log(post[0]);
-    res.render('../pages/editPost' , {post:post[0]});
+    const categories= await Category.find();
+
+    res.render('../pages/editPost' , {post:post[0], categories:categories});
 
 });
 //update & delete
 router.post('/single/', async (req,res) =>{
     const metoda = req.body.metoda;
-    //console.log(req.body.id);
+    
     if(metoda == "patch"){
         console.log(7);
         const obj ={

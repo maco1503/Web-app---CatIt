@@ -5,27 +5,46 @@
     <title>Actual Home Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
 </head>
+<header class="header">
+    <h1 class="logo"><a href="/post">Home</a></h1>
+    <ul class="main-nav">
+        
+        <%categories.forEach(category=>{%>
+            <li><a id="cats" href='/post/cat/<%=category._id%>'><%=category.name%></a></li>
+        <%})%>
+        
+    </ul>
+    
+
+</header>
 <body>
-    <%categories.forEach(category=>{%>
-        <a href='/post/cat/<%=category._id%>'><%=category.name%></a>
-    <%})%>
     <br><br>
+    <div id="btn">
     <form id="newCat" action="/post/ncat" method="post" >
         <button id="showInput" type="button">New Category</button>
         <div id="categoryInput" style="display: none;">
-            <input id = "text" class="calsa" type="text" name="name">
+            <input id = "text" type="text" name="name">
+            <br>
             <button type="submit" id="save"><strong>Save</strong></button>
             <button type="button" id="cancel"><strong>Cancel</strong></button>
         </div>
-    </form><!--Delete id and class la input text-->
+    </form>
+    </div>
     
     <br><br>
-        <% posts.forEach( (post) => { %>
-                    <h5 > Title : <%= post.title %> </h5>
-                    <p > Content : <%= post.content  %> </p>
-                    <a href="/post/single/<%= post._id %>">See Post</a>
-        <%})%>
+    <div id="allpost">
+    <% posts.forEach( (post) => { %>
+                <div id="post">
+                    <a id="buton" href="/post/single/<%= post._id %>">
+                        <h2 id="title"> Title : <%= post.title %> </h5>
+                        <p id="content"> Content : <%= post.content  %> </p>
+
+                    </a>
+                </div>
+    <%})%>
+    </div>
         
 <script>
 

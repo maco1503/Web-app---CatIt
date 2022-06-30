@@ -5,22 +5,23 @@
     <title>
         Update page
     </title>
+    <link href="./style.css" rel="stylesheet">
         
 </head>
   <body>
       <form action="/post/single/" method="post">
-    <input id="title" type="text" " placeholder="title" name="title" required value="<%= post.title %>">
- <label for="title" >Title</label><br><br>
+          <label for="title" >Title</label><br><br>
+    <input id="title" type="text" " placeholder="title" name="title" required value="<%= post.title %>"><br><br>
 
- <input id="content" type="text" placeholder="content" name="content" required value="<%= post.content %>">
- <label for="content" >content</label><br><br>
- <select id="category_id" name="category">
-    <option disabled selected value><%= post.category %></option>
-    <option value="goofy">Goofy</option>
-    <option value="nsfw">NSFW</option>
-    <option value="advice">Advice</option>
-</select>
-<label for="category_id">Category</label>
+ <label for="content" >Content</label><br><br>
+    <input id="content" type="text" placeholder="content" name="content" required value="<%= post.content %>"><br><br>
+ <label for="category_id">Category</label><br><br>
+    <select id="category_id" name="category">
+        <option disabled selected value>Choose category</option>
+            <%categories.forEach(category=>{%>
+        <option value="<%=category.name%>"><%=category.name%></option>
+            <%})%>
+</select><br><br>
 <br><br>
 
 <input style="display:none" value="<%= post._id %>" name="id">
