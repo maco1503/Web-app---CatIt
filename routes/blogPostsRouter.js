@@ -25,7 +25,6 @@ router.get('/' , async (req , res)=>{
 });
 
 
-
 //create new cat
 router.post('/ncat',async(req,res)=>{
 
