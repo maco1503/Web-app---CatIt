@@ -19,6 +19,6 @@ app.use(express.static("pages"));
 
 
 app.listen(port, () =>{
-    console.log("merge");
+    console.log(`merge pe http://localhost:${port}/post`);
     mongoose.connect(process.env.MONGODB_URL);
 });
