@@ -6,21 +6,34 @@
 	<meta name="viewport" content=
 		"width=device-width,
 		initial-scale=1.0">
-    <title>Main feed</title>
-	<link href="./style.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/style1.css" />   
+		<title>Main feed</title>
 </head>
 
 <body>
-	<h1>Category : </h1>
-	<h2><%= post.category %></h2>
-    <h1 >Title : </h1>
-    <h2> <%= post.title %></h2>
-    <h1 >Content : </h1>
-	<p><%= post.content %></p>
+	<div id="singlePost">
+	<h1>Category : <%= post.category %> </h1>
+    <h1 >Title : <%= post.title %></h1>
+    <h1 >Content : <%= post.content %></h1>
+	</div>
     <a href="/post/single/edit/<%= post._id %>">Modify post</a>
-	<script>
-
-	</script>
+	
 </body>
-
+<style>
+	body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background:#2C3639;
+    
+  }
+	a{
+		text-decoration: none;
+	}
+	#singlePost{
+  
+  
+}
+</style>
 </html>

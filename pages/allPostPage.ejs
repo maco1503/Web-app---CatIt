@@ -5,7 +5,7 @@
     <title>Actual Home Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
 </head>
 <header class="header">
     <h1 class="logo"><a href="/post">Home</a></h1>
@@ -31,8 +31,9 @@
             <button type="button" id="cancel"><strong>Cancel</strong></button>
         </div>
     </form>
+    <br><br>
     </div>
-    
+    <a style="display:flex;justify-content: center;color:rgb(207, 202, 202)"href="/post/create">Create new post</a>
     <br><br>
     <div id="allpost">
     <% posts.forEach( (post) => { %>
