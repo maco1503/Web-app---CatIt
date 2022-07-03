@@ -6,17 +6,19 @@
 	<meta name="viewport" content=
 		"width=device-width,
 		initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="./css/style1.css" />   
+		<link rel="stylesheet" type="text/css" href="./css/style.css" />   
 		<title>Main feed</title>
 </head>
 
 <body>
+	<br>>
 	<div id="singlePost">
-	<h1>Category : <%= post.category %> </h1>
-    <h1 >Title : <%= post.title %></h1>
-    <h1 >Content : <%= post.content %></h1>
+		<h3 id="cat">Category : <%= post.category %> </h1>
+    <h1 id="title">Title : <%= post.title %></h1>
+    <h1 id="content">Content : <%= post.content %></h1>
+	
+    <a id="btn"href="/post/single/edit/<%= post._id %>">Modify post</a>
 	</div>
-    <a href="/post/single/edit/<%= post._id %>">Modify post</a>
 	
 </body>
 <style>
@@ -27,13 +29,43 @@
     min-height: 100vh;
     background:#2C3639;
     
-  }
+  	}
 	a{
 		text-decoration: none;
+
 	}
 	#singlePost{
-  
-  
-}
+    padding-top: 20px;
+    box-shadow: rgba(10, 10, 10, 0.24) 0px 3px 8px;
+    width:50%;
+    height: 50%;
+    position:relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    color:#a2a2a2;
+  	}
+	  #title,#cat{
+    margin: 30px 30px 30px 30px;
+    position: relative;
+    text-align: center;
+	color:#a2a2a2;
+  }
+  #content{
+    text-align: left;
+    margin: 30px 30px 30px 30px;
+  }
+  #btn{
+    display:flex;
+    justify-content: end;
+    
+    color:#a2a2a2
+  }
+  #text{
+    background: #3F4E4F;
+  }
+
 </style>
 </html>
