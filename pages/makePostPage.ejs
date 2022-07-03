@@ -11,9 +11,13 @@
 </head>
 
 <body>
+    <br><br>
+    <div>
 	<h1 id="greetings_id">Make a new post?</h1>
         <form id='newPost'action='/post/' method="post" >
+            <label for="title" >Title</label><br>
             <input type="text" id="title" name="title" placeholder = 'Title'><br><br>
+            <label for="content" >Content</label><br><br>
             <textarea id="content_id" value="text" name="content"
                           placeholder="Text(optional)"></textarea><br><br>
             <select id="category_id" name="category">
@@ -25,18 +29,62 @@
             <button type="submit">Create new post</button>
         </form>
 <br><br><br>
-        <form action='/post/' method="post" >
-            <input type="text" id="title" name="title" placeholder = 'Title'><br><br>
-            <textarea id="content_id" value="text" name="content"
-                          placeholder="Text(optional)"></textarea><br><br>
-            
-            <button type="submit">Create new post</button>
-        </form>
-
+        
+    </div>
     
 	<script>
 
 	</script>
 </body>
+<style>
+    body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background:#2C3639;
+    
+  	}
+	a{
+		text-decoration: none;
 
+	}
+	#singlePost,div{
+    padding-top: 20px;
+    box-shadow: rgba(10, 10, 10, 0.24) 0px 3px 8px;
+    width:50%;
+    height: 50%;
+    position:relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    color:#a2a2a2;
+  	}
+	  #title,#cat{
+    margin: 30px 30px 30px 30px;
+    position: relative;
+    text-align: center;
+	color:#a2a2a2;
+  }
+  #content{
+    text-align: left;
+    
+    
+  
+  }
+  #btn,button{
+    display:flexbox;
+    flex-direction: column;
+    color:#a2a2a2;
+    border: transparent;
+    border: transparent;
+    background-color: #3F4E4F;
+    color:#dcd7c9a8;
+  }
+  #text{
+    background: #3F4E4F;
+  }
+</style>
 </html>

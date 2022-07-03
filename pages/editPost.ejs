@@ -8,11 +8,13 @@
     <link href="./css/style.css" rel="stylesheet">        
 </head>
   <body>
+    <br><br>  
+    <div>
       <form action="/post/single/" method="post">
-          <label for="title" >Title</label><br><br>
+          <label for="title" >Title</label><br>
     <input id="title" type="text" " placeholder="title" name="title" required value="<%= post.title %>"><br><br>
 
- <label for="content" >Content</label><br><br>
+ <label for="content" >Content</label><br>
     <input id="content" type="text" placeholder="content" name="content" required value="<%= post.content %>"><br><br>
  <label for="category_id">Category</label><br><br>
     <select id="category_id" name="category">
@@ -31,6 +33,57 @@
 <br><br>
 
 </form>
-
+</div>
 
 </body>
+<style>
+    body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background:#2C3639;
+    
+  	}
+	a{
+		text-decoration: none;
+
+	}
+	#singlePost,div{
+    padding-top: 20px;
+    box-shadow: rgba(10, 10, 10, 0.24) 0px 3px 8px;
+    width:50%;
+    height: 50%;
+    position:relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    color:#a2a2a2;
+  	}
+	  #title,#cat{
+    margin: 30px 30px 30px 30px;
+    position: relative;
+    text-align: center;
+	color:#a2a2a2;
+  }
+  #content{
+    text-align: left;
+    
+    
+  
+  }
+  #btn,button{
+    display:flexbox;
+    flex-direction: column;
+    color:#a2a2a2;
+    border: transparent;
+    border: transparent;
+    background-color: #3F4E4F;
+    color:#dcd7c9a8;
+  }
+  #text{
+    background: #3F4E4F;
+  }
+</style>

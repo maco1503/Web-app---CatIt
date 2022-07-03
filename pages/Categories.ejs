@@ -10,23 +10,35 @@
 </head>
 
 <body>
+	<br><br>
+	<div id="btn">
 	<form id="editCat" action="/post/cat/" method="post" >
 		<input style="display:none" value="<%= categories._id %>" name="id">
-		<button id="showEInput" type="button">Edit Category</button>
+		<button id="showInput" type="button">Edit Category</button>
 		<div id="categoryEInput" style="display: none;">
 			
-			<input type="text" name="name">
-			<button type="submit" id="saveEdit" name="metoda" value="update"><strong>Save</strong></button>
+			<input type="text" id="text"name="name">
+			<button type="submit" id="save" name="metoda" value="update"><strong>Save</strong></button>
 			<button type="submit"id="delete" name="metoda" value="delete"><strong>Delete</strong></button>
-			<button type="button" id="cancelEdit"><strong>Cancel</strong></button>
+			<button type="button" id="cancel"><strong>Cancel</strong></button>
 		</div>
 	</form>
-	
+	</div>
+	<h1 id="cat">Category : <%= posts[0].category %> </h1>
+	<br>
+	<div id="allpost">
 	<% posts.forEach( (post) => { %>
-		<h5 > Title : <%= post.title %> </h5>
-		<p > Content : <%= post.content  %> </p>
-		<a href="/post/single/<%= post._id %>">See Post</a>
+		<div id="post">
+			<a id="buton" href="/post/single/<%= post._id %>">
+				<h2 id="title"> Title : <%= post.title %> </h5>
+				<p id="content"> Content : <%= post.content  %> </p>
+
+			</a>
+		
+		</div>
+		<br>
 	<%})%>
+	</div>
 	<script>
         function show(){
         document.getElementById("categoryEInput").style.display="";
@@ -34,11 +46,68 @@
     function hide(){
         document.getElementById("categoryEInput").style.display="none";
     }
-    document.getElementById("showEInput").addEventListener("click", show);
-    document.getElementById("saveEdit").addEventListener("click", hide);
-    document.getElementById("cancelEdit").addEventListener("click", hide);
+    document.getElementById("showInput").addEventListener("click", show);
+    document.getElementById("save").addEventListener("click", hide);
+    document.getElementById("cancel").addEventListener("click", hide);
     document.getElementById("delete").addEventListener("click", hide);
 	</script>
 </body>
-
+<style>
+	body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background:#2C3639;
+    
+  	}
+	a{
+		text-decoration: none;
+		color:#a2a2a2;
+	}
+	#allpost{
+  align-self: center;
+  color:#a2a2a2;
+  
+}
+  #post{
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width:50%;
+    height: 200px;
+    position:relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    
+  }
+	  #title,#cat{
+    margin: 30px 30px 30px 30px;
+    position: relative;
+    text-align: center;
+	color:#a2a2a2;
+  }
+  #content{
+    text-align: left;
+    margin: 30px 30px 30px 30px;
+  }
+  
+  #btn{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    color:#a2a2a2
+  }
+  #text{
+    background: #3F4E4F;
+  }
+  #showInput,#save,#cancel,#delete {
+    border: transparent;
+    background-color: #3F4E4F;
+    color:#dcd7c9a8;
+    
+}
+</style>
 </html>
