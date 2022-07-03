@@ -1,7 +1,7 @@
 # Web-app---CatIt
 Probably a cheap copy of reddit
 
-Markup :  - - - -
+- - - -
 
 We have a cozy home page, displaying all posts from all categories
 ![ssprimu](https://user-images.githubusercontent.com/61932105/177035879-ff4d2569-a281-448e-8640-22adcd730598.png)
@@ -14,10 +14,10 @@ This page shows a single post
 This is the "modify your post" page enabling changing your content and title as well as the category
 ![ss modify](https://user-images.githubusercontent.com/61932105/177035961-49bb0b70-79e3-436f-9649-49d0808d655f.png)
 
-Markup :  - - - -
+- - - -
 
 Project made with node,express,mongodb,moongose,ejs,html,css.
 The purpose of this project : 
- Markup : * Learn how to make a simple CRUD 
-          * Learn how to make the connection between the front-end and back-end(pages and database)
-          * Learn how to work with simple databases
+* Learn how to make a simple CRUD 
+* Learn how to make the connection between the front-end and back-end(pages and database)
+* Learn how to work with simple databases
